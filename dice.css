@@ -59,13 +59,3 @@
     position: absolute;
     border: solid black 1px;
 }
-
-//below might be fucked
-
-body, html {
-    background-color: transparent !important;
-}
-
-#canvas {
-    background-color: transparent !important;
-}
