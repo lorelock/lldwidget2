@@ -56,17 +56,17 @@
 }
 
 #rollButton {
-    width: 100vw; /* Full width of the viewport */
-    height: 100vh; /* Full height of the viewport */
-    background-color: transparent; /* Fully transparent background */
-    border: none; /* Remove border */
-    color: transparent; /* Make the text color transparent */
-    cursor: pointer; /* Show pointer cursor on hover */
-    position: absolute; /* Position the button to cover the entire page */
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 1000; /* Ensure the button is on top of everything */
+    z-index: 1000;
 }
+
 
 .dice_place {
     position: absolute;
