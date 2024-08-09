@@ -35,7 +35,7 @@
 #labelhelp {
     font-size: 12pt;
     padding: 5px 15px;
-    color: rgba(21, 26, 26, 0.5);
+    color: rgba(0, 0, 0, 0);
     bottom: 50px;
 }
 
@@ -43,14 +43,14 @@
     text-align: center;
     font-size: 26pt;
     border: none;
-    color: rgba(0, 0, 0, 0.8);
-    background-color: rgba(231, 0, 20, 0);
+    color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
     top: 60%;
 }
 
 #sethelp {
     font-size: 12pt;
-    color: rgba(21, 26, 26, 0.5);
+    color: rgba(0, 0, 0, 0);
     background: none;
     top: 25%;
 }
