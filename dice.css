@@ -72,20 +72,10 @@
     border: solid black 1px;
 }
 
-body, html {
+body {
     background-color: transparent;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden; /* Prevent scrollbars from appearing */
 }
 
 #canvas {
-    background-color: transparent; /* Transparent canvas background */
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
+    background-color: transparent;
 }
