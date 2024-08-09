@@ -9,22 +9,23 @@ function dice_initialize(container) {
 
     var rollButton = $t.id('rollButton');
 
+    // Initialize dice box with WebGLRenderer ensuring background transparency
     var box = new $t.dice.dice_box(canvas, { w: 500, h: 300 });
+    box.renderer.setClearColor(0x000000, 0); // Transparent background, but dice remain opaque
 
     function rollDice() {
         var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
         var vectors = diceTypes.map(function(type) {
-            // Spawn dice from random off-screen positions
             var spawnPosition = {
                 x: Math.random() < 0.5 ? -box.w * (Math.random() + 0.5) : box.w * (Math.random() + 0.5),
                 y: Math.random() < 0.5 ? -box.h * (Math.random() + 0.5) : box.h * (Math.random() + 0.5)
             };
-            var boost = (Math.random() * 2.5 + 1.25) * 0.92; // Reduced boost by 8%
-            var velocity = { x: spawnPosition.x * 0.92, y: spawnPosition.y * 0.92, z: -11.5 }; // Reduced velocity by 8%
+            var boost = (Math.random() * 2.5 + 1.25) * 0.85; // Reduced boost by 8%
+            var velocity = { x: spawnPosition.x * 0.85, y: spawnPosition.y * 0.85, z: -11.5 }; // Reduced velocity by 8%
             var angularVelocity = {
-                x: (Math.random() * 1.75 - 0.875) * 0.92, // Reduced angular velocity by 8%
-                y: (Math.random() * 1.75 - 0.875) * 0.92,
-                z: (Math.random() * 1.75 - 0.875) * 0.92
+                x: (Math.random() * 1.75 - 0.875) * 0.85, // Reduced angular velocity by 8%
+                y: (Math.random() * 1.75 - 0.875) * 0.85,
+                z: (Math.random() * 1.75 - 0.875) * 0.85
             };
             return {
                 set: type,
