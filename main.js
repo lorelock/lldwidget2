@@ -19,12 +19,12 @@ function dice_initialize(container) {
                 x: Math.random() < 0.5 ? -box.w * (Math.random() + 0.5) : box.w * (Math.random() + 0.5),
                 y: Math.random() < 0.5 ? -box.h * (Math.random() + 0.5) : box.h * (Math.random() + 0.5)
             };
-            var boost = Math.random() * 2.5 + 1.25; // Increased boost for more velocity
-            var velocity = { x: spawnPosition.x * 1, y: spawnPosition.y * 1, z: -12.5 }; // Further increased velocity
+            var boost = (Math.random() * 2.5 + 1.25) * 0.92; // Reduced boost by 8%
+            var velocity = { x: spawnPosition.x * 0.92, y: spawnPosition.y * 0.92, z: -11.5 }; // Reduced velocity by 8%
             var angularVelocity = {
-                x: Math.random() * 1.75 - 0.875, // Increased angular velocity
-                y: Math.random() * 1.75 - 0.875,
-                z: Math.random() * 1.75 - 0.875
+                x: (Math.random() * 1.75 - 0.875) * 0.92, // Reduced angular velocity by 8%
+                y: (Math.random() * 1.75 - 0.875) * 0.92,
+                z: (Math.random() * 1.75 - 0.875) * 0.92
             };
             return {
                 set: type,
