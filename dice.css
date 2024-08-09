@@ -55,16 +55,6 @@
     top: 25%;
 }
 
-#selector_div button {
-    font-size: 20pt;
-    color: rgb(245, 245, 247);
-    background-color: rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-    border: none;
-    width: 5em;
-    top: 62%;
-}
-
 #rollButton {
     width: 100vw; /* Full width of the viewport */
     height: 100vh; /* Full height of the viewport */
@@ -75,8 +65,8 @@
     position: absolute; /* Position the button to cover the entire page */
     top: 0;
     left: 0;
+    z-index: 1000; /* Ensure the button is on top of everything */
 }
-
 
 .dice_place {
     position: absolute;
