@@ -824,3 +824,21 @@
 
 }).apply(teal.dice = teal.dice || {});
 
+// below here might be fucked
+
+// Force the renderer to have a transparent background
+if (this.renderer) {
+    this.renderer.setClearColor(0x000000, 0);  // Set background to transparent
+}
+
+// Ensure the desk (floor) material is transparent
+if (this.desk) {
+    this.desk.material.transparent = true;
+    this.desk.material.opacity = 0;
+}
+
+// Force the canvas to be transparent if it's not already
+const canvas = document.querySelector('#canvas');
+if (canvas) {
+    canvas.style.backgroundColor = 'transparent';
+}
