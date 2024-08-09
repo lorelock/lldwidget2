@@ -15,10 +15,10 @@ function dice_initialize(container) {
         var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
         var vectors = diceTypes.map(function(type) {
             var vector = {
-                x: (Math.random() * 2 - 1) * box.w,
-                y: (Math.random() * 2 - 1) * box.h
+                x: (Math.random() * 0.5 - 0.25) * box.w, // Smaller random range
+                y: (Math.random() * 0.5 - 0.25) * box.h  // Smaller random range
             };
-            var boost = Math.random() * 5 + 2; // Randomize boost for each die
+            var boost = Math.random() * 2 + 1; // Reduced boost for calmer rolls
             return box.generate_vectors({ set: [type] }, vector, boost)[0];
         });
         box.clear();
