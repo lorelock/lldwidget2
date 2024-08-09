@@ -397,6 +397,9 @@ this.renderer.shadowMap.enabled = true;
 this.renderer.shadowMap.type = THREE.PCFShadowMap;
 this.renderer.setClearColor(0xffffff, 0);  // Background is now transparent
 
+        var box = new $t.dice.dice_box(canvas, { w: window.innerWidth, h: window.innerHeight });
+box.renderer.setClearColor(0x000000, 0); // Reinforce transparency
+
 
         this.reinit(container, dimentions);
 
