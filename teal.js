@@ -221,3 +221,12 @@ teal.when = function(promises) {
     return deferred.promise();
 }
 
+//below might be fucked
+
+// Ensure the canvas and body background are transparent
+document.body.style.backgroundColor = 'transparent';
+
+const canvas = document.querySelector('#canvas');
+if (canvas) {
+    canvas.style.backgroundColor = 'transparent';
+}
