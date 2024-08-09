@@ -38,7 +38,7 @@ function dice_initialize(container) {
     }
 
     function notation_getter() {
-        return $t.dice.parse_notation("4d6");
+        return $t.dice.parse_notation("1d4 + 1d6 + 1d8 + 1d10 + 1d20");
     }
 
     function after_roll(notation, result) {
@@ -56,12 +56,12 @@ function dice_initialize(container) {
     }
 
     function initializeDicePositions() {
-        var diceCount = 5; // Example for 5 dice
-        var spacing = 20; // Spacing between dice
-        var startX = -((diceCount - 1) * spacing) / 2; // Center the dice
+        var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd20'];
+        var spacing = 80; // Spacing between dice, adjusted for the size of D6
+        var startX = -((diceTypes.length - 1) * spacing) / 2; // Center the dice
 
-        for (var i = 0; i < diceCount; i++) {
-            var dice = $t.dice.create_d6(); // Assuming create_d6() creates a D6 dice
+        for (var i = 0; i < diceTypes.length; i++) {
+            var dice = $t.dice['create_' + diceTypes[i]](); // Create the respective dice
             dice.position.set(startX + i * spacing, 0, 0); // Position dice in a line
             box.scene.add(dice); // Add the dice to the scene
         }
@@ -78,4 +78,3 @@ function dice_initialize(container) {
         $t.raise_event(rollButton, 'mouseup');
     }
 }
-
