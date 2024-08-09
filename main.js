@@ -11,28 +11,17 @@ function dice_initialize(container) {
 
     var box = new $t.dice.dice_box(canvas, { w: 500, h: 300 });
 
-    function initializeDicePositions() {
-        var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd20'];
-        var spacing = 80;
-        var startX = -((diceTypes.length - 1) * spacing) / 2;
-
-        for (var i = 0; i < diceTypes.length; i++) {
-            var dice = $t.dice['create_' + diceTypes[i]]();
-            dice.position.set(startX + i * spacing, 0, 0);
-            box.scene.add(dice);
-        }
+    function rollDice() {
+        var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
+        var vectors = box.generate_vectors({ set: diceTypes }, { x: 0, y: 0 }, 1);
+        box.clear();
+        box.roll(vectors, null, function(result) {
+            console.log(result); // Output result or handle it as needed
+        });
     }
 
-    function hideDice() {
-        while (box.dices.length > 0) {
-            var dice = box.dices.pop();
-            box.scene.remove(dice);
-        }
-        box.renderer.render(box.scene, box.camera);
-    }
+    rollButton.addEventListener('click', rollDice);
 
-    rollButton.addEventListener('click', hideDice);
-
-    initializeDicePositions();
+    // Roll the dice once as soon as the page loads
+    rollDice();
 }
-
