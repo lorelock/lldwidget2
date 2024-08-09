@@ -65,6 +65,19 @@
     top: 62%;
 }
 
+#rollButton {
+    width: 100%; /* Make the button cover the entire width */
+    height: 100%; /* buttons to cover height */
+    font-size: 20pt;
+    color: #000000; /* Set text color to black */
+    background-color: transparent; /* Make the background transparent */
+    cursor: pointer;
+    border: 0px solid #000000; /* no border */
+    text-align: center; /* Center text */
+    line-height: 50px; /* Center text vertically */
+}
+
+
 .dice_place {
     position: absolute;
     border: solid black 1px;
