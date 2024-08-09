@@ -14,21 +14,21 @@ function dice_initialize(container) {
     function rollDice() {
         var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
         var vectors = diceTypes.map(function(type) {
-            // Spawn dice from off-screen
-            var vector = {
+            // Spawn dice from random off-screen positions
+            var spawnPosition = {
                 x: Math.random() < 0.5 ? -box.w * (Math.random() + 0.5) : box.w * (Math.random() + 0.5),
                 y: Math.random() < 0.5 ? -box.h * (Math.random() + 0.5) : box.h * (Math.random() + 0.5)
             };
-            var boost = Math.random() * 2 + 1; // Increased boost for more bounce
-            var velocity = { x: vector.x * 0.75, y: vector.y * 0.75, z: -10 }; // Increased velocity
+            var boost = Math.random() * 2.5 + 1.25; // Increased boost for more velocity
+            var velocity = { x: spawnPosition.x * 1, y: spawnPosition.y * 1, z: -12.5 }; // Further increased velocity
             var angularVelocity = {
-                x: Math.random() * 1.5 - 0.75, // Slightly increased angular velocity
-                y: Math.random() * 1.5 - 0.75,
-                z: Math.random() * 1.5 - 0.75
+                x: Math.random() * 1.75 - 0.875, // Increased angular velocity
+                y: Math.random() * 1.75 - 0.875,
+                z: Math.random() * 1.75 - 0.875
             };
             return {
                 set: type,
-                pos: { x: vector.x, y: vector.y, z: 200 },
+                pos: { x: spawnPosition.x, y: spawnPosition.y, z: 200 },
                 velocity: velocity,
                 angle: angularVelocity,
                 axis: { x: Math.random(), y: Math.random(), z: Math.random(), a: Math.random() }
