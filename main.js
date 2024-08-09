@@ -14,12 +14,25 @@ function dice_initialize(container) {
     function rollDice() {
         var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
         var vectors = diceTypes.map(function(type) {
-            var vector = {
-                x: (Math.random() * 2 - 1) * box.w,
-                y: (Math.random() * 2 - 1) * box.h
+            // Spawn dice from random off-screen positions
+            var spawnPosition = {
+                x: Math.random() < 0.5 ? -box.w * (Math.random() + 0.5) : box.w * (Math.random() + 0.5),
+                y: Math.random() < 0.5 ? -box.h * (Math.random() + 0.5) : box.h * (Math.random() + 0.5)
             };
-            var boost = Math.random() * 5 + 2; // Randomize boost for each die
-            return box.generate_vectors({ set: [type] }, vector, boost)[0];
+            var boost = (Math.random() * 2.5 + 1.25) * 0.92; // Reduced boost by 8%
+            var velocity = { x: spawnPosition.x * 0.92, y: spawnPosition.y * 0.92, z: -11.5 }; // Reduced velocity by 8%
+            var angularVelocity = {
+                x: (Math.random() * 1.75 - 0.875) * 0.92, // Reduced angular velocity by 8%
+                y: (Math.random() * 1.75 - 0.875) * 0.92,
+                z: (Math.random() * 1.75 - 0.875) * 0.92
+            };
+            return {
+                set: type,
+                pos: { x: spawnPosition.x, y: spawnPosition.y, z: 200 },
+                velocity: velocity,
+                angle: angularVelocity,
+                axis: { x: Math.random(), y: Math.random(), z: Math.random(), a: Math.random() }
+            };
         });
         box.clear();
         box.roll(vectors, null, function(result) {
