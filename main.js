@@ -11,15 +11,10 @@ function dice_initialize(container) {
 
     var box = new $t.dice.dice_box(canvas, { w: 500, h: 300 });
 
-    // Ensure WebGL renderer has transparency enabled
-    box.renderer = new THREE.WebGLRenderer({ alpha: true });
-    box.renderer.setClearColor(0x000000, 0); // Fully transparent background
-    box.renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-    canvas.appendChild(box.renderer.domElement);
-
     function rollDice() {
         var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
         var vectors = diceTypes.map(function(type) {
+            // Spawn dice from random off-screen positions
             var spawnPosition = {
                 x: Math.random() < 0.5 ? -box.w * (Math.random() + 0.5) : box.w * (Math.random() + 0.5),
                 y: Math.random() < 0.5 ? -box.h * (Math.random() + 0.5) : box.h * (Math.random() + 0.5)
