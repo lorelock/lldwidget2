@@ -61,3 +61,16 @@ p {
     left: 0;
     z-index: 1000;
 }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents any scrollbars from appearing */
+}
+
+#canvas {
+    width: 100vw;
+    height: 100vh;
+}
