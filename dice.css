@@ -28,7 +28,7 @@
     font-size: 32pt;
     word-spacing: 0.5em;
     padding: 5px 15px;
-    color: rgba(0, 00, 0, 0);
+    color: rgba(0, 0, 0, 0);
     top: 45%;
 }
 
@@ -73,9 +73,9 @@
 }
 
 body {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);;
 }
 
 #canvas {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);;
 }
