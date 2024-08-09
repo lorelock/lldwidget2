@@ -61,13 +61,3 @@ p {
     left: 0;
     z-index: 1000;
 }
-
-// below might be fucked
-
-body, html {
-    background-color: transparent !important;
-}
-
-#canvas {
-    background-color: transparent !important;
-}
