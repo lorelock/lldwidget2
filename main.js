@@ -15,11 +15,23 @@ function dice_initialize(container) {
         var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
         var vectors = diceTypes.map(function(type) {
             var vector = {
-                x: (Math.random() * 0.5 - 0.25) * box.w, // Smaller random range
-                y: (Math.random() * 0.5 - 0.25) * box.h  // Smaller random range
+                x: (Math.random() * 0.2 - 0.1) * box.w, // Even smaller random range
+                y: (Math.random() * 0.2 - 0.1) * box.h  // Even smaller random range
             };
-            var boost = Math.random() * 2 + 1; // Reduced boost for calmer rolls
-            return box.generate_vectors({ set: [type] }, vector, boost)[0];
+            var boost = Math.random() * 1.5 + 0.5; // Further reduced boost
+            var velocity = { x: vector.x * 0.5, y: vector.y * 0.5, z: -5 }; // Reduced velocity
+            var angularVelocity = {
+                x: Math.random() * 1 - 0.5, // Reduced angular velocity
+                y: Math.random() * 1 - 0.5,
+                z: Math.random() * 1 - 0.5
+            };
+            return {
+                set: type,
+                pos: { x: vector.x, y: vector.y, z: 100 },
+                velocity: velocity,
+                angle: angularVelocity,
+                axis: { x: Math.random(), y: Math.random(), z: Math.random(), a: Math.random() }
+            };
         });
         box.clear();
         box.roll(vectors, null, function(result) {
