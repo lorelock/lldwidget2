@@ -483,8 +483,8 @@ this.renderer.setClearColor(0x000000, 0);  // Background is now transparent
         this.scene.add(this.light);
 
         if (this.desk) this.scene.remove(this.desk);
-        this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1), 
-                new THREE.MeshPhongMaterial({ color: that.desk_color }));
+       this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1), 
+             new THREE.MeshPhongMaterial({ color: that.desk_color, transparent: true, opacity: 0 }));
         this.desk.receiveShadow = that.use_shadows;
         this.scene.add(this.desk);
 
