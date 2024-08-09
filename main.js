@@ -13,7 +13,14 @@ function dice_initialize(container) {
 
     function rollDice() {
         var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
-        var vectors = box.generate_vectors({ set: diceTypes }, { x: 0, y: 0 }, 1);
+        var vectors = diceTypes.map(function(type) {
+            var vector = {
+                x: (Math.random() * 2 - 1) * box.w,
+                y: (Math.random() * 2 - 1) * box.h
+            };
+            var boost = Math.random() * 5 + 2; // Randomize boost for each die
+            return box.generate_vectors({ set: [type] }, vector, boost)[0];
+        });
         box.clear();
         box.roll(vectors, null, function(result) {
             console.log(result); // Output result or handle it as needed
