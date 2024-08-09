@@ -7,7 +7,6 @@ function dice_initialize(container) {
     canvas.style.width = window.innerWidth - 1 + 'px';
     canvas.style.height = window.innerHeight - 1 + 'px';
     var label = $t.id('label');
-    var selector_div = $t.id('selector_div');
     var rollButton = $t.id('rollButton');
     on_set_change();
 
@@ -35,7 +34,6 @@ function dice_initialize(container) {
     });
 
     function before_roll(vectors, notation, callback) {
-        selector_div.style.display = 'none';
         callback();
     }
 
@@ -55,8 +53,21 @@ function dice_initialize(container) {
         if (result.length > 1) res += ' = ' + 
                 (result.reduce(function(s, a) { return s + a; }) + notation.constant);
         label.innerHTML = res;
-        selector_div.style.display = 'inline-block';
     }
+
+    function initializeDicePositions() {
+        var diceCount = 5; // Example for 5 dice
+        var spacing = 20; // Spacing between dice
+        var startX = -((diceCount - 1) * spacing) / 2; // Center the dice
+
+        for (var i = 0; i < diceCount; i++) {
+            var dice = $t.dice.create_d6(); // Assuming create_d6() creates a D6 dice
+            dice.position.set(startX + i * spacing, 0, 0); // Position dice in a line
+            box.scene.add(dice); // Add the dice to the scene
+        }
+    }
+
+    initializeDicePositions();
 
     box.bind_throw(rollButton, notation_getter, before_roll, after_roll);
 
@@ -65,7 +76,6 @@ function dice_initialize(container) {
     }
     if (params.roll) {
         $t.raise_event(rollButton, 'mouseup');
-    } else {
-        selector_div.style.display = 'inline-block';
     }
 }
+
