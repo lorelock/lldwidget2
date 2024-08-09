@@ -389,13 +389,14 @@
         this.scene = new THREE.Scene();
         this.world = new CANNON.World();
 
-        this.renderer = window.WebGLRenderingContext
-            ? new THREE.WebGLRenderer({ antialias: true })
-            : new THREE.CanvasRenderer({ antialias: true });
-        container.appendChild(this.renderer.domElement);
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFShadowMap;
-        this.renderer.setClearColor(0xffffff, 1);
+this.renderer = window.WebGLRenderingContext
+    ? new THREE.WebGLRenderer({ antialias: true })
+    : new THREE.CanvasRenderer({ antialias: true });
+container.appendChild(this.renderer.domElement);
+this.renderer.shadowMap.enabled = true;
+this.renderer.shadowMap.type = THREE.PCFShadowMap;
+this.renderer.setClearColor(0x000000, 0);  // Background is now transparent
+
 
         this.reinit(container, dimentions);
 
