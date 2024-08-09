@@ -55,18 +55,6 @@
     top: 25%;
 }
 
-#rollButton {
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
 .dice_place {
     position: absolute;
     border: solid black 1px;
