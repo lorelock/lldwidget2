@@ -3,26 +3,30 @@
 function dice_initialize(container) {
     $t.remove($t.id('loading_text'));
 
-    var canvas = $t.id('canvas');
-    canvas.style.width = window.innerWidth - 1 + 'px';
-    canvas.style.height = window.innerHeight - 1 + 'px';
+    const canvas = $t.id('canvas');
+    const rollButton = $t.id('rollButton');
 
-    var rollButton = $t.id('rollButton');
+    function resizeCanvas() {
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
+    }
 
-    var box = new $t.dice.dice_box(canvas, { w: 500, h: 300 });
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();  // Initial call to set the correct size
+
+    const box = new $t.dice.dice_box(canvas, { w: window.innerWidth, h: window.innerHeight });
 
     function rollDice() {
-        var diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
-        var vectors = diceTypes.map(function(type) {
-            // Spawn dice from random off-screen positions
-            var spawnPosition = {
+        const diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
+        const vectors = diceTypes.map(type => {
+            const spawnPosition = {
                 x: Math.random() < 0.5 ? -box.w * (Math.random() + 0.5) : box.w * (Math.random() + 0.5),
                 y: Math.random() < 0.5 ? -box.h * (Math.random() + 0.5) : box.h * (Math.random() + 0.5)
             };
-            var boost = (Math.random() * 2.5 + 1.25) * 0.92; // Reduced boost by 8%
-            var velocity = { x: spawnPosition.x * 0.92, y: spawnPosition.y * 0.92, z: -11.5 }; // Reduced velocity by 8%
-            var angularVelocity = {
-                x: (Math.random() * 1.75 - 0.875) * 0.92, // Reduced angular velocity by 8%
+            const boost = (Math.random() * 2.5 + 1.25) * 0.92;
+            const velocity = { x: spawnPosition.x * 0.92, y: spawnPosition.y * 0.92, z: -11.5 };
+            const angularVelocity = {
+                x: (Math.random() * 1.75 - 0.875) * 0.92,
                 y: (Math.random() * 1.75 - 0.875) * 0.92,
                 z: (Math.random() * 1.75 - 0.875) * 0.92
             };
@@ -35,13 +39,11 @@ function dice_initialize(container) {
             };
         });
         box.clear();
-        box.roll(vectors, null, function(result) {
-            console.log(result); // Output result or handle it as needed
+        box.roll(vectors, null, result => {
+            console.log(result);
         });
     }
 
     rollButton.addEventListener('click', rollDice);
-
-    // Roll the dice once as soon as the page loads
-    rollDice();
+    rollDice();  // Roll the dice once as soon as the page loads
 }
