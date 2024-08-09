@@ -395,7 +395,7 @@ this.renderer = window.WebGLRenderingContext
 container.appendChild(this.renderer.domElement);
 this.renderer.shadowMap.enabled = true;
 this.renderer.shadowMap.type = THREE.PCFShadowMap;
-this.renderer.setClearColor(0x000000, 0);  // Background is now transparent
+this.renderer.setClearColor(0xffffff, 0);  // Background is now transparent
 
 
         this.reinit(container, dimentions);
