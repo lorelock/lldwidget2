@@ -43,6 +43,24 @@ p {
     margin-bottom: 0px;
 }
 
+body, html {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* To prevent scrollbars from appearing */
+}
+
+#canvas {
+    background-color: transparent; /* Ensure the canvas itself is also transparent */
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .control_panel {
     padding: 15px;
     padding-bottom: 0px;
